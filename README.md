@@ -14,4 +14,5 @@ Cafe Sales data cleaning work
 - Optionally infers missing Quantity/Price from the other fields
 - Parses dates
 - Removes duplicate Transaction IDs
-- Saves cleaned CSV + a quick data-quality report
+- Saves cleaned CSV in `cafe_sale_clean`
+- a quick data-quality report in `cleaning_report`
