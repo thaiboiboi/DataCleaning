@@ -1,5 +1,5 @@
 # DataCleaning
-Cafe Sales data cleaning (end-to-end)
+Cafe Sales data cleaning work
 - Loads dirty_cafe_sales.csv from CafeSale.zip
 - Cleans missing/ERROR/UNKNOWN values
 - Converts numeric columns
