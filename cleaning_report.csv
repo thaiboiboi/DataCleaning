@@ -1,0 +1,2 @@
+rows,missing_transaction_date,missing_item,missing_quantity,missing_price_per_unit,missing_total_spent,total_mismatch_flags
+10000,460,969,38,38,40,0
