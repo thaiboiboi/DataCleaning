@@ -1,3 +1,10 @@
+#CODE RUNNING ATTENTION
+Before running the code, go to `Terminal`, paste to run this 
+```
+pip install -r requirements.txt
+```
+then run the code `CafeSale_code.py`
+
 # DataCleaning
 Cafe Sales data cleaning work
 - Loads dirty_cafe_sales.csv from CafeSale.zip
