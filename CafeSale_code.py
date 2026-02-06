@@ -15,7 +15,6 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 OUT_CLEAN_CSV = OUT_DIR / "cafe_sales_clean.csv"
 OUT_REPORT_CSV = OUT_DIR / "cleaning_report.csv"
 
-# For Total Spent validation: allow small floating error
 TOTAL_TOLERANCE = 0.01
 
 # ----------------------------
@@ -136,7 +135,10 @@ df["Total Spent"] = to_numeric_series(df["Total Spent"])
 # Quantity should be integer-ish and >= 1 (keep NaN for now)
 # Round to nearest int where close to an int (optional, but nice)
 qty = df["Quantity"]
-df.loc[qty.notna(), "Quantity"] = np.where(np.isclose(qty, np.round(qty), atol=1e-9), np.round(qty), qty)
+mask = df["Quantity"].notna()
+q = df.loc[mask, "Quantity"]
+
+df.loc[mask, "Quantity"] = np.where(np.isclose(q, np.round(q), atol=1e-9),np.round(q),q)
 df["Quantity"] = df["Quantity"].astype("Float64")  # allows NA
 
 # Remove non-sensical values
@@ -157,10 +159,6 @@ inferred_qty = df.loc[mask_qty_missing, "Total Spent"] / df.loc[mask_qty_missing
 # Keep only plausible quantities (>=1); round if close to integer
 inferred_qty = np.where(np.isfinite(inferred_qty), inferred_qty, np.nan)
 df.loc[mask_qty_missing, "Quantity"] = inferred_qty
-# Re-apply integer rounding + invalid cleanup
-qty = df["Quantity"]
-df.loc[qty.notna(), "Quantity"] = np.where(np.isclose(qty, np.round(qty), atol=1e-9), np.round(qty), qty)
-df.loc[df["Quantity"].notna() & (df["Quantity"] <= 0), "Quantity"] = np.nan
 
 # 3) If Price is missing but Total and Quantity exist -> infer Price = Total / Quantity
 mask_price_missing = df["Price Per Unit"].isna() & df["Total Spent"].notna() & df["Quantity"].notna()
