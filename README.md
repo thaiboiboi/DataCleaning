@@ -1,5 +1,4 @@
 # DataCleaning
-"""
 Cafe Sales data cleaning (end-to-end)
 - Loads dirty_cafe_sales.csv from CafeSale.zip
 - Cleans missing/ERROR/UNKNOWN values
@@ -9,4 +8,3 @@ Cafe Sales data cleaning (end-to-end)
 - Parses dates
 - Removes duplicate Transaction IDs
 - Saves cleaned CSV + a quick data-quality report
-"""
