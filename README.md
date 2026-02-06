@@ -1,4 +1,4 @@
-#CODE RUNNING ATTENTION
+# CODE RUNNING ATTENTION
 Before running the code, go to `Terminal`, paste to run this 
 ```
 pip install -r requirements.txt
